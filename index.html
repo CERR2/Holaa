@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felicitame por mi Cumple!!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #ff9999 0%, #ff4d4d 100%);
+            color: #333;
+            margin: 0; 
+            padding: 0;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+            overflow: hidden;
+            animation: bg-animation 30s ease infinite;
+        }
+        @keyframes bg-animation {
+            0%, 100% { background: linear-gradient(135deg, #ff9999 0%, #ff4d4d 100%); }
+            50% { background: linear-gradient(135deg, #ff4d4d 0%, #ff0000 100%); }
+        }
+        .container { 
+            max-width: 500px; 
+            width: 90%; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            position: relative;
+        }
+        .container:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 1);
+        }
+        h2 { 
+            margin: 0 0 20px 0; 
+            font-weight: 600;
+            color: #ff4d4d;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: #ff9999;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+            animation: underline 3s infinite;
+        }
+        @keyframes underline {
+            0%, 100% { width: 100px; }
+            50% { width: 150px; }
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        .highlight {
+            font-size: 1.8em;
+            color: blue;
+            font-weight: bold;
+        }
+        input[type="text"], textarea { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            box-sizing: border-box;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"]:focus, textarea:focus {
+            border-color: #ff4d4d;
+            box-shadow: 0 0 8px rgba(255, 77, 77, 0.2);
+        }
+        button { 
+            padding: 12px 24px; 
+            border: none; 
+            background-color: #ff4d4d; 
+            color: white; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease, transform 0.3s ease; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        button:hover { 
+            background-color: #ff9999; 
+            transform: translateY(-2px);
+        }
+        .hidden {
+            display: none;
+        }
+        #inocenteImage {
+            display: none;
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            .container { 
+                padding: 15px; 
+                border-radius: 8px; 
+            }
+            input[type="text"], textarea { 
+                padding: 10px; 
+            }
+            button { 
+                padding: 10px 20px; 
+            }
+            body {
+                height: auto;
+                padding: 20px;
+            }
+            #inocenteImage {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="formTitle">Felicitame por mi Cumple ! ! ! </h2>
+        <label id="nameLabel" for="name">Dime quien eres Soy :</label>
+        <input type="text" id="name" maxlength="50">
+        <label for="message">Mensaje :</label>
+        <textarea id="message" rows="3" maxlength="250"></textarea>
+        <button id="sendButton" onclick="moveButton()">Enviar</button>
+    </div>
+    <div>
+        <img id="inocenteImage" src="https://ideasnuevas.net/wp-content/uploads/2016/11/inocentekeep_calm_and_feliz_dia_de_los_inocentes_6.png" alt="Feliz DÃ­a de los Inocentes">
+    </div>
+    <script>
+        let moveCount = 0;
+        const originalButtonPosition = {
+            left: '10px',
+            bottom: '10px',
+            transform: 'translate(0, 0)'
+        };
+
+        function moveButton() {
+            const sendButton = document.getElementById('sendButton');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+
+            if (moveCount < 2) {
+                const x = Math.random() * (containerRect.width - sendButton.offsetWidth);
+                const y = Math.random() * (containerRect.height - sendButton.offsetHeight);
+                sendButton.style.position = 'absolute';
+                sendButton.style.left = `${x}px`;
+                sendButton.style.top = `${y}px`;
+                moveCount++;
+            } else {
+                sendButton.style.position = 'absolute';
+                sendButton.style.left = originalButtonPosition.left;
+                sendButton.style.bottom = originalButtonPosition.bottom;
+                sendButton.style.transform = originalButtonPosition.transform;
+                showInocenteImage();
+            }
+        }
+
+        function showInocenteImage() {
+            const sendButton = document.getElementById('sendButton');
+            const inocenteImage = document.getElementById('inocenteImage');
+            const formTitle = document.getElementById('formTitle');
+            
+            sendButton.classList.add('hidden');
+            inocenteImage.style.display = 'block';
+
+            setTimeout(() => {
+                inocenteImage.style.display = 'none';
+                sendButton.classList.remove('hidden');
+                sendButton.onclick = sendMessage;
+                formTitle.innerText = "NO TE RINDAS DALE A ENVIAR";
+                formTitle.classList.add('highlight');
+            }, 3000);
+        }
+
+        function sendMessage() {
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+
+    if (name && message) {
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=<!-- Aquí termina la sección del cuerpo -->54<!-- Aquí termina la sección del cuerpo -->75<!-- Aquí termina la sección del cuerpo -->481<!-- Aquí termina la sección del cuerpo -->7<!-- Aquí termina la sección del cuerpo -->&text=${encodeURIComponent('Hola Carlos soy ' + name + ' ' + message)}`;
+        window.open(whatsappUrl, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
